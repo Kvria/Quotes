@@ -1,0 +1,24 @@
+<style>@import url('https://fonts.googleapis.com/css?family=Comic+Neue&display=swap');</style>
+
+<div class="container">
+    <h1>QUOTES</h1>
+    <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <div *ngFor='let quote of quotes ; let i = index'>
+                    <li appHighlight>{{quote.name}}</li>
+                    <p>{{quote.quote}}</p>
+                    <p>This  was posted in {{quote.postedOn|timeCount}} </p>
+                    <button type="button" class="btn btn-danger" (click)="deleteQuote(i)">Delete</button>
+                    <button (click)="like(i)" class="btn btn-primary">{{quote.likes}}</button>
+                    <button (click)="dislike(i)" class="btn btn-success">{{quote.dislikes}}</button>
+                </div>
+            </div>
+                <div class="col-md-6">
+                     <app-quotes-form (addNewQuote) = 'createQuote($event)'></app-quotes-form>
+                </div>
+                <p *ngIf='quotes.length > 4'>You have too many quotes.</p>
+                
+        </div>
+</div>
+                

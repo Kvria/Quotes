@@ -1,0 +1,42 @@
+<style>@import url('https://fonts.googleapis.com/css?family=Comic+Neue&display=swap');</style>
+    
+    <h2 class="text-center">Enter new quote here:</h2>
+    <hr>
+        <form (ngSubmit) = 'submitForm()' #quoteForm='ngForm'>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="form-group">
+                    <label for="name">Username</label><br>
+                    <input required maxlength="15" name="name" type="text" id="name" class="form-control" [(ngModel)]='newQuote.name' #name='ngModel'>
+                    <div class="alert alert-danger" *ngIf="name.touched && !name.valid"></div>
+                    <div *ngIf="name.errors.required">Username is required.</div>
+                    <div *ngIf="name.errors.maxlength">Username is a maximum of 15 characters.</div>
+                </div>
+    
+                <br>
+    
+                <div class="form-group">
+                    <label for="quote">Quote</label><br>
+                    <textarea class="form-control" name="quote" id="quote"   [(ngModel)]='newQuote.quote' ></textarea>
+                </div>
+    
+                <br>
+    
+                <div class="form-group">
+                    <label for="author">Author</label><br>
+                    <input required maxlength="20"  name="author"  type="text" id="author" class="form-control" #author='ngModel' [(ngModel)]='newQuote.author' >
+                    <div *ngIf="author.errors.maxlength">Author's name is a maximum of 2 characters. </div>
+                </div>
+    
+            </div>
+            <div>
+                <button type="submit" class="btn btn-success">Save</button> 
+            </div>
+            
+        </div>
+    
+    </form>
+    
+
+
